@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
+  <script src="https://js.leapmotion.com/leap-0.6.4.js"></script>
+<script src="js/main.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Final Project</title>
+</head>
+<body>
+
+
+  <div id='output'>
+
+  </div>
+
+</body>
+
+<!-- <script type="text/javascript">
+
+function concatData(id, data) {
+ return id + ": " + data + "<br>"
+}
+
+var output = document.getElementById('output');
+var framestring = "";
+var handstring = "";
+var fingerstring = "";
+var hand;
+var finger;
+
+var options = { enableGestures: true};
+
+Leap.loop(options, function(frame){
+ framestring = concatData("frame_id", frame.id);
+ framestring += concatData("num_hands", frame.hands.length);
+ framestring += concatData("num_fingers", frame.fingers.length);
+ framestring += "<br>";
+
+ output.innerHTML = framestring;
+})
+
+
+ </script> -->
+
+</html>
