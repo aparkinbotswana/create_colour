@@ -10,7 +10,12 @@ $( document ).ready(function() {
 
       const rgb = `rgb(${index})`;
       window.document.body.style.backgroundColor = rgb;
+      $('body').html(rgb).css('color', rgb).css('filter', 'invert(1)')
+
 
     }
   })
 })
+
+
+// css property to invert colour = filter: invert(1)
