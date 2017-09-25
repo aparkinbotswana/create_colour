@@ -3,7 +3,6 @@ $( document ).ready(function() {
 
 
   Leap.loop(function(frame){
-    // console.log(Leap);
     if (frame.hands.length === 1) {
       const index = frame.hands[0].fingers[1].tipPosition.map(function(p){
         return parseInt(Math.abs(p) / 600 * 255);
@@ -14,9 +13,9 @@ $( document ).ready(function() {
 
       if (frame.hands[0].fingers[1].tipPosition[2] < -50) {
         console.log(frame.hands[0].fingers[1].tipPosition[2]);
-        getElementsByTagName('html').css("border": "green solid 1px");
+        // getElementsByTagName('html').css("border": "green solid 1px");
       }
-      getElementsByTagName('html').css("border": "red solid 1px");
+      // getElementsByTagName('html').css("border": "red solid 1px");
     }
   })
 })
