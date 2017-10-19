@@ -1,6 +1,19 @@
 
 $( document ).ready(function() {
 
+  // finds the height and width of the screen that the program is being run on so that these values can be passed as parameters for the canvas height and width. Honeybadger don't give a shit.
+  var windowHeight = $(window).height();
+  var windowWidth = $(window).width();
+
+
+  // adjusts height and width of canvas to make it equal to screen dimension
+  $('#output').css({height: windowHeight});
+  $('#output').css({width: windowWidth});
+
+
+  console.log(windowWidth);
+  console.log(windowHeight);
+
 
   Leap.loop(function(frame){
     if (frame.hands.length === 1) {
