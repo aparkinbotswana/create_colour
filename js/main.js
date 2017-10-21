@@ -23,13 +23,12 @@ $( document ).ready(function() {
   console.log(windowWidth);
   console.log(windowHeight);
 
+
   var c = document.getElementById("output");
   var ctx = c.getContext("2d");
-  ctx.moveTo(0,20);
-  ctx.lineTo(100,400);
+  ctx.moveTo(0,0);
+  ctx.lineTo(800,100);
   ctx.stroke();
-
-
 
   Leap.loop(function(frame){
     if (frame.hands.length === 1) {
