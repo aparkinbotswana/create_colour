@@ -1,6 +1,28 @@
 
 $( document ).ready(function() {
 
+  // var premiumAccess = true
+  // var access = false
+
+  $("#premium").click(function() {
+    console.log('hey');
+  });
+
+  $("#free").click(function() {
+    console.log('hey hey');
+  });
+
+
+
+  // if (premiumAccess === true) {
+  //   $("#premuim").click(function() {
+  //     console.log('hey');
+  //   });
+  //
+  // } else if (access === true) {
+  //
+  // }
+
 
   // also, check the object to see where to get into in order to confirm if the connection to the Leap is working. excuted some code that makes to screen go pretty to indicate to user that the Leap connected and ready to use.
 

@@ -1,3 +1,42 @@
-/*canvas{
-  background-color: red;
-}*/
+
+body{
+  background-color: #F9F9F9;
+}
+
+p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+#landingPage{
+  text-align: center;
+}
+
+#thankYou{
+
+}
+
+#sketch{
+
+}
+
+#instruction{
+
+}
+
+
+.enterButton{
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+
+#premium{
+  right: 0
+}
+.Button{
+  display: inline;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black
+}
