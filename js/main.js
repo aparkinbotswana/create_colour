@@ -29,9 +29,6 @@ $( document ).ready(function() {
 
 
 
-
-
-
   // finds the height and width of the screen that the program is being run on so that these values can be passed as parameters for the canvas height and width. Honeybadger don't give a shit.
   var windowHeight = $(window).height();
   var windowWidth = $(window).width();
