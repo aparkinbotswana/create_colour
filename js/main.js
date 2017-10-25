@@ -1,14 +1,27 @@
 
 $( document ).ready(function() {
 
-  var premiumAccess = true
-  var access = false
+  // var premiumAccess = true
+  // var access = false
 
-  if (premiumAccess === true) {
+  $("#premium").click(function() {
+    console.log('hey');
+  });
 
-  } else if (access === true) {
+  $("#free").click(function() {
+    console.log('hey hey');
+  });
 
-  }
+
+
+  // if (premiumAccess === true) {
+  //   $("#premuim").click(function() {
+  //     console.log('hey');
+  //   });
+  //
+  // } else if (access === true) {
+  //
+  // }
 
 
   Leap.loop(function(frame){
