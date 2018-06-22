@@ -1,5 +1,4 @@
-
-$( document ).ready(function() {
+document.addEventListener('DOMContentLoaded', function(){
 
   // var premiumAccess = true
   // var access = false
@@ -35,6 +34,13 @@ $( document ).ready(function() {
   // finds the height and width of the screen that the program is being run on so that these values can be passed as parameters for the canvas height and width. Honeybadger don't give a shit.
   var windowHeight = $(window).height();
   var windowWidth = $(window).width();
+
+  function changeAttr(el, attr, attrProperty){
+    document.querySelector(el).setAttribute(attr, attrProperty);
+  }//gets the element. changes attribute, Style in the case of css.
+
+  // changeAttr('#draw', 'style', 'color:red;') EXAMPLE CODE USAGE
+
 
 
   // adjusts height and width of canvas to make it equal to screen dimension
@@ -76,4 +82,4 @@ $( document ).ready(function() {
       // getElementsByTagName('html').css("border": "red solid 1px");
     }
   })
-})
+}, false);
