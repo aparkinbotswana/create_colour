@@ -4,19 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/p5.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
-
-
-  <script src="https://js.leapmotion.com/leap-0.6.4.js"></script>
-<script src="js/main.js" charset="utf-8"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
+  <script src="js/leap-0.6.4.js"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <title>Sketch Times</title>
 
@@ -27,27 +22,6 @@
 
 
 <body>
-  <div id="landingPage">
-    <p id="thankYou">Thank you for purchasing</p>
-    <p id="sketch">Super Fun Fapy Sketch Time With Fingers!</p>
-    <p id="instruction">If your name is Connie or Luke, please proceed to Premium Access below!</p>
-
-    <div class="container">
-      <div class="enterButton">
-        <p id="premium" class="Button">PREMIUM ACCESS! You're a STAR!</p>
-      </div>
-
-
-
-      <div class="enterButton">
-        <p id="free" class="Button">free user.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <canvas id="output">
-  </canvas>
-
+  <canvas id="sketch"></canvas>
 </body>
 </html>
