@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var windowHeight = window.innerHeight;
   var windowWidth = window.innerWidth;
 
+  let canvasElement = document.getElementById("sketch");
+  let displayArea = canvasElement.getContext("2d");
+
   function changeAttr(el, attr, attrProperty){
     document.querySelector(el).setAttribute(attr, attrProperty);
   }//gets the element. changes attribute, Style in the case of css.
@@ -37,8 +40,9 @@ document.addEventListener('DOMContentLoaded', function(){
       // Convert the normalized coordinates to span the canvas
       let canvasX = canvasElement.width * normalizedPosition[0];
       let canvasY = canvasElement.height * (1 - normalizedPosition[1]);
+      displayArea.lineTo(canvasX, canvasY);
+      displayArea.stroke();
       //we can ignore z for a 2D context
-      displayArea.strokeText("(" + canvasX.toFixed(1) + ", " + canvasY.toFixed(1) + ")", canvasX, canvasY);
 		}
 
     // if (frame.hands.length === 1) {
