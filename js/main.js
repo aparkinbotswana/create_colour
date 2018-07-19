@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
       // canvasElement.width = canvasElement.width; //clear
       
       //Get a pointable and normalize the tip position
-      let pointable = frame.pointables[0];
+      let pointable = frame.pointables[1];
       // let speed = pointable.tipVelocity;
       // console.log(speed);
       let interactionBox = frame.interactionBox;
