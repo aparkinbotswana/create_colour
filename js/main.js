@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if (indexFinger.extended === true && middleFinger.extended === true) {
         let currentPixelX = canvasX
         let currentPixelY = canvasY
-        let previousPixel
+        // let previousPixel
         previousPixel.fillStyle = 'white'
         currentPixel.fillRect(canvasX, canvasY, 1, 1)
         currentPixel.fillStyle = 'black'
