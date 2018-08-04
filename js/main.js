@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
+  // this that I should consider using:
+  // pointable.tipVelocity - what is a good way to use velocity in the use of the sketch program?
 
   // also, check the object to see where to get into in order to confirm if the connection to the Leap is working. excuted some code that makes to screen go pretty to indicate to user that the Leap connected and ready to use.
 
@@ -8,31 +10,56 @@ document.addEventListener('DOMContentLoaded', function(){
   let canvasElement = document.getElementById("sketch");
   let displayArea = canvasElement.getContext("2d");
 
-  function changeAttr(el, attr, attrProperty){
+  const changeAttr = function(el, attr, attrProperty){
     document.querySelector(el).setAttribute(attr, attrProperty);
   }//gets the element. changes attribute, Style in the case of css.
+
+  const drawSketch = function(canvasX, canvasY){
+    displayArea.lineTo(canvasX, canvasY);
+    displayArea.stroke();
+  }
+
+
 
   changeAttr('#sketch', 'width', `${windowWidth};`)
   changeAttr('#sketch', 'height', `${windowHeight};`)
   // adjusts height and width of canvas to make it equal to screen dimension
 
+
+
   Leap.loop(function(frame){
+    const thumb = frame.pointables[0];
+    const indexFinger = frame.pointables[1];
+    const middleFinger = frame.pointables[2];
+    const pinkyFinger = frame.pointables[3];
+    const ringFinger = frame.pointables[4];
+
     if(frame.pointables.length > 0){
-      // canvasElement.width = canvasElement.width; //clear
-      
-      //Get a pointable and normalize the tip position
-      let pointable = frame.pointables[1];
-      // let speed = pointable.tipVelocity;
-      // console.log(speed);
-      let interactionBox = frame.interactionBox;
-      let normalizedPosition = interactionBox.normalizePoint(pointable.tipPosition, true);
-      
       // Convert the normalized coordinates to span the canvas
+      let interactionBox = frame.interactionBox;
+      let normalizedPosition = interactionBox.normalizePoint(indexFinger.tipPosition, true);
+      ////////// keep the normalizedPosition bit of code in mind. Might impact other code cause it specifically targets index finger. come back to it if need be
       let canvasX = canvasElement.width * normalizedPosition[0];
       let canvasY = canvasElement.height * (1 - normalizedPosition[1]);
-      displayArea.lineTo(canvasX, canvasY);
-      displayArea.stroke();
-      //we can ignore z for a 2D context
+
+      if (indexFinger.extended === true && middleFinger.extended === true) {
+        let currentPixelX = canvasX
+        let currentPixelY = canvasY
+        let previousPixel
+        previousPixel.fillStyle = 'white'
+        currentPixel.fillRect(canvasX, canvasY, 1, 1)
+        currentPixel.fillStyle = 'black'
+        displayArea.moveTo(canvasX, canvasY)
+        return
+      }
+      // canvasElement.width = canvasElement.width; //clear
+      
+      //Get a pointable, in this case the index finger and normalize the tip position
+      // let speed = indexFinger.tipVelocity;
+      // console.log(speed);
+      drawSketch(canvasX, canvasY);
+
+      
 		}
 
     // if (frame.hands.length === 1) {
