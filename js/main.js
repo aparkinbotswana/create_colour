@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function(){
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
   const canvasElement = document.getElementById("sketch");
-  const canvasContainer = document.getElementById("canvas-container")
   const displayArea = canvasElement.getContext("2d");
 
   const changeAttr = (el, attr, attrProperty) => {
@@ -23,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   const responsiveCanvas = () => {
-    console.log('working still');
+    // c.attr('width', $(container).width()); //max width
+    // c.attr('height', $(container).height()); //max height
+    changeAttr('#sketch', 'width', )
+    changeAttr('#sketch', 'height', )
   }
 
 
@@ -31,9 +33,11 @@ document.addEventListener('DOMContentLoaded', function(){
   changeAttr('#canvas-container', 'height', `${windowHeight};`)
   // adjusts height and width of canvas to make it equal to screen dimension
 
-  window.addEventListener("resize", function () {
-    responsiveCanvas()
-  });
+  // window.addEventListener("resize", function () {
+  //   responsiveCanvas()
+  // });
+  const canvasContainerWidth = document.getElementById("canvas-container").getBoundingClientRect().width
+  const canvasContainerHeight = document.getElementById("canvas-container").getBoundingClientRect().height
 
 
   Leap.loop(function(frame){
