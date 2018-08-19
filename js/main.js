@@ -5,29 +5,47 @@ document.addEventListener('DOMContentLoaded', function(){
   // also, check the object to see where to get into in order to confirm if the connection to the Leap is working. excuted some code that makes to screen go pretty to indicate to user that the Leap connected and ready to use.
 
   // finds the height and width of the screen that the program is being run on so that these values can be passed as parameters for the canvas height and width. Honeybadger don't give a shit.
+
+
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
-  let canvasElement = document.getElementById("sketch");
-  let displayArea = canvasElement.getContext("2d");
+  const canvasElement = document.getElementById("sketch");
+  const canvasContainer = document.getElementById("canvas-container")
+  const displayArea = canvasElement.getContext("2d");
 
-  const changeAttr = function(el, attr, attrProperty){
+  const changeAttr = (el, attr, attrProperty) => {
     document.querySelector(el).setAttribute(attr, attrProperty);
   }//gets the element. changes attribute, Style in the case of css.
 
-  const drawSketch = function(canvasX, canvasY){
+  const drawSketch = (canvasX, canvasY) => {
     displayArea.lineTo(canvasX, canvasY);
     displayArea.stroke();
   }
 
+  const responsiveCanvas = () => {
+    console.log('working still');
+  }
 
 
-  changeAttr('#sketch', 'width', `${windowWidth};`)
-  changeAttr('#sketch', 'height', `${windowHeight};`)
+  changeAttr('#canvas-container', 'width', `${windowWidth};`)
+  changeAttr('#canvas-container', 'height', `${windowHeight};`)
   // adjusts height and width of canvas to make it equal to screen dimension
 
+  window.addEventListener("resize", function () {
+    responsiveCanvas()
+  });
 
 
   Leap.loop(function(frame){
+
+      // let windowHeight = window.innerHeight;
+      // let windowWidth = window.innerWidth;
+      // // console.log(windowWidth);
+
+      //   changeAttr('#sketch', 'width', `${windowWidth};`)
+      //   changeAttr('#sketch', 'height', `${windowHeight};`)
+
+
     const thumb = frame.pointables[0];
     const indexFinger = frame.pointables[1];
     const middleFinger = frame.pointables[2];
@@ -43,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function(){
       let canvasY = canvasElement.height * (1 - normalizedPosition[1]);
 
       if (indexFinger.extended === true && middleFinger.extended === true) {
+        // save current pixel x and y into variable to be accessed in next loop
+        // try something like fillRect().fillStyle?
+        // see if there is a way to simply clear the previous pixel rather than change the colour
+        // BEST option would be some code that checks the colour of the current pixel and inverts so as to always display a 'cursor' relative to your position. Needed because this will work even if you are hovering over a pixel which has already been coloured. WORK TOWARDS THIS SOLUTION
         let currentPixelX = canvasX
         let currentPixelY = canvasY
         // let previousPixel
