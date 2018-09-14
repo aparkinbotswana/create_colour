@@ -71,12 +71,12 @@ document.addEventListener('DOMContentLoaded', function(){
         // try something like fillRect().fillStyle?
         // see if there is a way to simply clear the previous pixel rather than change the colour
         // BEST option would be some code that checks the colour of the current pixel and inverts so as to always display a 'cursor' relative to your position. Needed because this will work even if you are hovering over a pixel which has already been coloured. WORK TOWARDS THIS SOLUTION
-        let currentPixelX = canvasX
-        let currentPixelY = canvasY
+        // let currentPixelX = canvasX
+        // let currentPixelY = canvasY
         // let previousPixel
-        previousPixel.fillStyle = 'white'
-        currentPixel.fillRect(canvasX, canvasY, 1, 1)
-        currentPixel.fillStyle = 'black'
+        // previousPixel.fillStyle = 'white'
+        // currentPixel.fillRect(canvasX, canvasY, 1, 1)
+        // currentPixel.fillStyle = 'black'
         ctx.moveTo(canvasX, canvasY)
         return
       }
