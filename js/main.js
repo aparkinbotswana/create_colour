@@ -1,4 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', function(){
+
+  
   // this that I should consider using:
   // pointable.tipVelocity - what is a good way to use velocity in the use of the sketch program?
 
@@ -6,49 +9,48 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // finds the height and width of the screen that the program is being run on so that these values can be passed as parameters for the canvas height and width. Honeybadger don't give a shit.
 
-
-  let windowHeight = window.innerHeight;
-  let windowWidth = window.innerWidth;
-  const canvasElement = document.getElementById("sketch");
-  const displayArea = canvasElement.getContext("2d");
+  const canvas = document.getElementById("sketch");
+  const ctx = canvas.getContext("2d");
 
   const changeAttr = (el, attr, attrProperty) => {
     document.querySelector(el).setAttribute(attr, attrProperty);
   }//gets the element. changes attribute, Style in the case of css.
 
   const drawSketch = (canvasX, canvasY) => {
-    displayArea.lineTo(canvasX, canvasY);
-    displayArea.stroke();
+    ctx.lineTo(canvasX, canvasY);
+    ctx.stroke();
   }
 
   const responsiveCanvas = () => {
-    // c.attr('width', $(container).width()); //max width
-    // c.attr('height', $(container).height()); //max height
-    changeAttr('#sketch', 'width', )
-    changeAttr('#sketch', 'height', )
-  }
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+  } // adjusts height and width of canvas to make it equal to screen dimension
 
+  window.addEventListener("resize", function () {
+    responsiveCanvas();
+  });
 
-  changeAttr('#canvas-container', 'width', `${windowWidth};`)
-  changeAttr('#canvas-container', 'height', `${windowHeight};`)
-  // adjusts height and width of canvas to make it equal to screen dimension
+  // window.addEventListener("click", function () {
+  //   // only jpeg is supported by jsPDF
+  //   let imgData = canvas.toDataURL("image/jpeg", 1.0);
+  //   let pdf = new jsPDF();
+  //   pdf.addImage(imgData, 'JPEG', 0, 0);
+  //   pdf.save("download.pdf");
+  // }, false); // This this event listener handles the canvas conversion to pdf and then download.
 
-  // window.addEventListener("resize", function () {
-  //   responsiveCanvas()
-  // });
-  const canvasContainerWidth = document.getElementById("canvas-container").getBoundingClientRect().width
-  const canvasContainerHeight = document.getElementById("canvas-container").getBoundingClientRect().height
+  changeAttr('#sketch', 'width', window.innerWidth)
+  changeAttr('#sketch', 'height', window.innerHeight)
+
+  // ctx.fillStyle = "blue";
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // ctx.moveTo(0, 0)
+  // ctx.lineTo(150, 150);
+  // ctx.strokeStyle = 'red';  
+  // ctx.stroke();
+
 
 
   Leap.loop(function(frame){
-
-      // let windowHeight = window.innerHeight;
-      // let windowWidth = window.innerWidth;
-      // // console.log(windowWidth);
-
-      //   changeAttr('#sketch', 'width', `${windowWidth};`)
-      //   changeAttr('#sketch', 'height', `${windowHeight};`)
-
 
     const thumb = frame.pointables[0];
     const indexFinger = frame.pointables[1];
@@ -61,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function(){
       let interactionBox = frame.interactionBox;
       let normalizedPosition = interactionBox.normalizePoint(indexFinger.tipPosition, true);
       ////////// keep the normalizedPosition bit of code in mind. Might impact other code cause it specifically targets index finger. come back to it if need be
-      let canvasX = canvasElement.width * normalizedPosition[0];
-      let canvasY = canvasElement.height * (1 - normalizedPosition[1]);
+      let canvasX = canvas.width * normalizedPosition[0];
+      let canvasY = canvas.height * (1 - normalizedPosition[1]);
 
       if (indexFinger.extended === true && middleFinger.extended === true) {
         // save current pixel x and y into variable to be accessed in next loop
@@ -75,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function(){
         previousPixel.fillStyle = 'white'
         currentPixel.fillRect(canvasX, canvasY, 1, 1)
         currentPixel.fillStyle = 'black'
-        displayArea.moveTo(canvasX, canvasY)
+        ctx.moveTo(canvasX, canvasY)
         return
       }
-      // canvasElement.width = canvasElement.width; //clear
+      // canvas.width = canvas.width; //clear
       
       //Get a pointable, in this case the index finger and normalize the tip position
       // let speed = indexFinger.tipVelocity;
